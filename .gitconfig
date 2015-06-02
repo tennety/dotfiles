@@ -1,0 +1,14 @@
+[user]
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	ci = commit
+[user]
+	name = Chandu Tennety
+	email = chandu.tennety@gmail.com
+[push]
+	default = tracking
+[core]
+	pager = less -r
+	editor = vim
