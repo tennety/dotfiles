@@ -4,4 +4,10 @@ source ~/.bash_aliases
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # rbenv
-eval "$(rbenv init -)"
+if [ $(which rbenv) ]; then
+  eval "$(rbenv init -)"
+fi
+
+if [ $(which asdf) ]; then
+  . $(brew --prefix asdf)/asdf.sh
+fi

@@ -8,6 +8,9 @@ __ruby_ps1 () {
   elif [ $(which rbenv) ]; then
     rbenv_ruby=`rbenv version | sed -e 's/ .*//'`
     echo $rbenv_ruby
+  elif [ $(which asdf) ]; then
+    asdf_ruby=`asdf current ruby | sed -e 's/ .*//'`
+    echo $asdf_ruby
   else
     echo ' '
   fi
@@ -36,3 +39,8 @@ DYLD_LIBRARY_PATH="/usr/local/lib"
 source ~/.apikeys
 
 complete -C aws_completer aws
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source ~/.tmuxinator/completion.bash
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
