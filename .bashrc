@@ -9,13 +9,26 @@ __ruby_ps1 () {
     rbenv_ruby=`rbenv version | sed -e 's/ .*//'`
     echo $rbenv_ruby
   elif [ $(which asdf) ]; then
-    asdf_ruby=`asdf current ruby | sed -e 's/ .*//'`
-    echo $asdf_ruby
+    asdf_ruby=`asdf current ruby |  sed -e 's/ruby *//' | sed -e 's/ .*//'`
+    echo 💎 $asdf_ruby
   else
     echo ' '
   fi
 }
-export PS1='\[\e]0;\u@\h: \w\a\]$(echo "#") ${debian_chroot:+($debian_chroot)}\[\033[01;30m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W \[\033[01;35m\]$(__ruby_ps1) \[\033[01;32m\]$(__git_ps1 "(%s)")\[\033[00m\]\n'
+
+__js_ps1 () {
+  if [ $(which nvm) ]; then
+    nvm_js=`nvm current | sed -e 's/ .*//'`
+    echo $nvm_js
+  elif [ $(which asdf) ]; then
+    asdf_js=`asdf current nodejs |  sed -e 's/nodejs *//' | sed -e 's/ .*//'`
+    echo 🌳 $asdf_js
+  else
+    echo ' '
+  fi
+}
+
+export PS1='\[\e]0;\u@\h: \w\a\]$(echo "#") ${debian_chroot:+($debian_chroot)}\[\033[01;30m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W \[\033[01;35m\]$(__ruby_ps1)  $(__js_ps1) \[\033[01;32m\]$(__git_ps1 "(%s)")\[\033[00m\]\n'
 
 export PATH=~/local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 

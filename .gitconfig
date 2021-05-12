@@ -4,6 +4,7 @@
 	st = status
 	br = branch
 	ci = commit
+	sw = switch
 [user]
 	name = Chandu Tennety
 	email = chandu.tennety@gmail.com
@@ -12,3 +13,11 @@
 [core]
 	pager = less -r
 	editor = vim
+	excludesfile = /Users/chandutennety/.gitignore_global
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	ff = only
