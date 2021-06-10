@@ -11,3 +11,6 @@ fi
 if [ $(which asdf) ]; then
   . $(brew --prefix asdf)/asdf.sh
 fi
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+

@@ -21,3 +21,4 @@
 	required = true
 [pull]
 	ff = only
+	excludesfile = /Users/chandutennety/.gitignore
